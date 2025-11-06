@@ -19,7 +19,7 @@ RegisterCommand('startrob', function(source)
     -- Check if the party has exactly 2 members to
     local members = exports['party_system']:GetPartyMembers(source)
     if not members or #members ~= 2 then
-        TriggerClientEvent('chat:addMessage', source, { args = { '[AR]', 'This robbery requires exactly 2 players in your party!' } })
+        TriggerClientEvent('chat:addMessage', source, { args = { '[AR]', 'This robbery requires 2 players in your party!' } })
         return
     end
     -- Start robbery for all party members or blah blah whatever you want to do
