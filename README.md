@@ -3,10 +3,10 @@ Party System for FiveM
 
 ## Commands
 
-| `/cparty`|
-| `/pinv [id]`|
-| `/acpinv` |
-| `/pkick [id]`|
+`/cparty`
+`/pinv [id]`
+`/acpinv` 
+`/pkick [id]`
 
 
 **Example**
