@@ -1,7 +1,6 @@
 local Parties = {}
 local PlayerParty = {} 
 
--- /cparty
 RegisterCommand('cparty', function(source)
 
     if PlayerParty[source] then
@@ -18,7 +17,6 @@ RegisterCommand('cparty', function(source)
     TriggerClientEvent('chat:addMessage', source, { args = { '[Party]', 'Party created successfully.' } })
 end)
 
--- /pinv
 RegisterCommand('pinv', function(source, args)
     local target = tonumber(args[1])
     if not target or not GetPlayerName(target) then
@@ -45,7 +43,6 @@ RegisterCommand('pinv', function(source, args)
     TriggerClientEvent('chat:addMessage', target, { args = { '[Party]', 'You were invited to join ' .. GetPlayerName(source) .. '\'s party. Type /acpinv to accept (20s).' } })
 end)
 
--- /acpinv
 RegisterCommand('acpinv', function(source)
     for leader, data in pairs(Parties) do
         local expiry = data.invites[source]
@@ -70,7 +67,6 @@ RegisterCommand('acpinv', function(source)
     TriggerClientEvent('chat:addMessage', source, { args = { '[Party]', 'You have no pending invites.' } })
 end)
 
--- /pkick
 RegisterCommand('pkick', function(source, args)
     local target = tonumber(args[1])
     if not target then return end
@@ -94,7 +90,7 @@ RegisterCommand('pkick', function(source, args)
     TriggerClientEvent('chat:addMessage', source, { args = { '[Party]', 'Player not found in your party.' } })
 end)
 
--- Remove from party on disconnect
+-- Remove player from party on disconnect
 AddEventHandler('playerDropped', function()
     local src = source
     local leader = PlayerParty[src]
@@ -121,7 +117,7 @@ AddEventHandler('playerDropped', function()
     end
 end)
 
--- Get members of a player's party
+
 exports('GetPartyMembers', function(playerId)
     local leader = PlayerParty[playerId]
     if not leader then return nil end
@@ -130,12 +126,10 @@ exports('GetPartyMembers', function(playerId)
     return party.members
 end)
 
---Check if player is in a party
 exports('IsInParty', function(playerId)
     return PlayerParty[playerId] ~= nil
 end)
 
---Get size of a player's party
 exports('GetPartySize', function(playerId)
     local leader = PlayerParty[playerId]
     if not leader then return 0 end
@@ -143,3 +137,4 @@ exports('GetPartySize', function(playerId)
     if not party then return 0 end
     return #party.members
 end)
+
