@@ -1,4 +1,4 @@
-Party System for FiveM
+## Party System for FiveM
 ## Commands
 
 `/cparty`
